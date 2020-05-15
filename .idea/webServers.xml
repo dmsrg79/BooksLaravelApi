@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="595aa052-ba95-4089-9d4c-dd6b84b00a3d" name="Server 1">
+        <fileTransfer rootFolder="/var/www/html/dimas" accessType="SFTP" host="167.71.5.48" port="22" sshConfigId="4f3dfb92-a8a9-4aa4-8f68-660dfed90cd6" sshConfig="root@167.71.5.48:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
