@@ -4,7 +4,8 @@
 
 @section('content')
     <h1>Update author info</h1>
-    <form action="{{route('submit-update-author', $data->id)}}" method="post">
+    <form action="{{route('authors.update', $data->id)}}" method="post">
+        @method('PUT')
         @csrf
         <div class="form-group">
             <label for="name">Name</label>

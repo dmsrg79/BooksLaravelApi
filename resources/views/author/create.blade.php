@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Add author page</h1>
-    <form action="{{ Route('add-author-submit') }}" method="post">
+    <form action="/authors" method="post">
         @csrf
         <div class="form-group">
             <label for="name">Name</label>

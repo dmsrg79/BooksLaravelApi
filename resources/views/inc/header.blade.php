@@ -10,10 +10,10 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/">Home</a>
         @can('is_admin')
-        <a class="p-2 text-dark" href="/author/add">Add author</a>
-        <a class="p-2 text-dark" href="{{ route('add-book-page') }}">Add book</a>
+        <a class="p-2 text-dark" href="{{ Route('authors.create') }}">Add author</a>
+        <a class="p-2 text-dark" href="{{ Route('add-book-page') }}">Add book</a>
         @endcan
-        <a class="p-2 text-dark" href="{{ route('all-authors') }}">Authors</a>
+        <a class="p-2 text-dark" href="{{ Route('authors.index') }}">Authors</a>
         <a class="p-2 text-dark" href="/book/all">Books</a>
     </nav>
     @guest

@@ -2,56 +2,93 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
-use App\Models\Book;
-
+use Illuminate\Http\Request;
 
 
 class AuthorController extends Controller
 {
-
-    public function showAllAuthors() {
-        $author = new Author;
-        $book = new Book;
-        return view('author/all', ['data' => $author->get(), 'data2' => $book->get() ]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('author/all', [
+            'data' => Author::get(),
+        ]);
     }
 
-    public function showOneAuthor($id) {
-        $author = new Author;
-
-        return view('author/info', ['data' => $author->find($id)]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('author/create');
     }
 
-    public function showPageUpdateAuthor($id) {
-        $author = new Author;
-
-        return view('author/edit', ['data' => $author -> find($id)]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(AuthorRequest $request)
+    {
+        Author::create($request->input());
+        return redirect('/authors');
     }
 
-    public function SubmitUpdateAuthor($id, AuthorRequest $req) {
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return view('author/info', ['author'=> Author::find($id)]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('author/edit', ['data' => Author::find($id)]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, AuthorRequest $request)
+    {
+
         $author = Author::find($id);
-        $author->name = $req->input('name');
-        $author->birth_year = $req->input('birth_year');
-
-        $author->save();
-
-        return redirect()->route('all-authors');
+        $author->update($request->all());
+        return redirect()->route('authors.index');
     }
 
-    public function deleteAuthor($id) {
-      Author::find($id)->delete();
-      return redirect()->route('all-authors');
-    }
-
-    public function submit(AuthorRequest $req) {
-        $author = new Author();
-        $author->name = $req->input('name');
-        $author->birth_year = $req->input('birth_year');
-
-        $author->save();
-        return redirect()->route('all-authors');
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Author::find($id)->delete();
+        return redirect()->route('authors.index');
     }
 }

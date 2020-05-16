@@ -13,7 +13,7 @@
 
 {{--            @auth--}}
             @can('is_admin')
-            <a href="{{ Route('one-author', $element->id) }}">
+            <a href="{{ Route('authors.show', $element->id) }}">
                 <button class="btn btn-warning">Info</button>
             </a>
             @endcan
