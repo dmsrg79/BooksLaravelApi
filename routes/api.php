@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/list', 'ApiController@list');
-Route::get('/{book}', 'ApiController@get');
-Route::post('/{book}', 'ApiController@update');
-Route::delete('/{book}', 'ApiController@delete');
+Route::get('/{books}', 'ApiController@get');
+Route::post('/{books}', 'ApiController@update');
+Route::delete('/{books}', 'ApiController@delete');

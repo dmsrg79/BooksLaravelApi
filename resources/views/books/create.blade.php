@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Add book page</h1>
-    <form action="{{ route('add-book-create') }}" method="post">
+    <form action="{{ Route('books.store') }}" method="post">
         @csrf
         <div class="form-group">
             <label for="Title">Title</label>
@@ -14,8 +14,8 @@
         <div class="form-group">
             <label for="title" id="author_id">Author</label>
             <select name="author_id">
-                @foreach ($authorAll as $el)
-                <option value="{{ $el->id }}">{{ $el->name }}</option>
+                @foreach ($authors as $author)
+                    <option value="{{ $author->id }}">{{ $author->name }}</option>
                 @endforeach
             </select>
         </div>
