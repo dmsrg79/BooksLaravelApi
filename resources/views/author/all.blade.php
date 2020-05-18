@@ -5,6 +5,14 @@
 
 @section('content')
     <h1>All authors</h1>
+
+    <form action="{{ Route('authors.create') }}">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Add new author
+        </button>
+    </form>
+    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+
     @foreach($authors as $author)
         <div class="alert alert-info">
             <h3>{{ $author -> name }}</h3>
