@@ -9,6 +9,11 @@ use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:canPost')->except('index');
+    }
+
     public function index()
     {
         return view('books/all', [

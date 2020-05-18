@@ -8,14 +8,20 @@ use App\Models\Role;
 
 class UserController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:canPost')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('users/index', ['users' => User::get()]);
+        return view('users/index', ['users' => User::get(),
+        ]);
     }
 
     /**
@@ -47,9 +53,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $canpost = User::find($id)->canPost();
         return view('users/show', [
             'user' => User::find($id),
-            'roles' => Role::get()
+            'roles' => Role::get(),
+            'test' => $canpost
         ]);
     }
 
@@ -76,7 +84,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        return redirect()->route('users.index');
     }
 
     /**

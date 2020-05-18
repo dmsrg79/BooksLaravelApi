@@ -3,8 +3,13 @@
 @section('title-block') All books @endsection
 
 @section('content')
+
     <h1>All users:</h1>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Add new user</button>
+
+    <form method="get" action="{{ Route('users.create') }}">
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Add new user</button>
+    </form>
+
     <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
     @foreach($users as $user)
         <div class="alert alert-info">

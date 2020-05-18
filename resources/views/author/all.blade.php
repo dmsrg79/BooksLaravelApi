@@ -20,11 +20,11 @@
             <p> Books: <small>{{ $author -> book -> count() }}</small></p>
 
 {{--            @auth--}}
-            @can('is_admin')
+{{--            @can('is_admin')--}}
             <a href="{{ Route('authors.show', $author->id) }}">
                 <button class="btn btn-warning">Info</button>
             </a>
-            @endcan
+{{--            @endcan--}}
 {{--            @endauth--}}
         </div>
     @endforeach

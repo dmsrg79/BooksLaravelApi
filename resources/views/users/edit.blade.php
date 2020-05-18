@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Edit user page</h1>
-    <form action="" method="post">
+    <form action="{{ Route('users.update', $user->id)  }}" method="post">
         @method('PUT')
         @csrf
         <div class="form-group">
