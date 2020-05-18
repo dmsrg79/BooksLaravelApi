@@ -15,6 +15,7 @@
         @endcan
         <a class="p-2 text-dark" href="{{ Route('authors.index') }}">Authors</a>
         <a class="p-2 text-dark" href="{{ Route('books.index') }}">Books</a>
+        <a class="p-2 text-dark" href="{{ Route('users.index') }}">Users</a>
     </nav>
     @guest
     <a class="btn btn-outline-primary" href="{{ Route('register') }}">Sign up</a>

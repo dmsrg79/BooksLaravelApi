@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::Resource('authors', 'AuthorController');
 Route::Resource('books', 'BookController');
+Route::Resource('users', 'UserController');
 Auth::routes();
 
 
