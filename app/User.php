@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function Role(){
+        return $this->belongsTo('App\Models\Role');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,4 +40,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRole() {
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    public function canPost() {
+        if ($this->role->title === 'Administrator') {
+            return true;
+        } elseif ($this->role->title === 'Editor') {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

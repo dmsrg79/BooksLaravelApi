@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:canPost')->except('index');
+    }
+
+    
     public function index()
     {
         return view('author/all', [
